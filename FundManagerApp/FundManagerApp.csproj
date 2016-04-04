@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\FundViewModel.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +69,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CommissionProvider.cs" />
+    <Compile Include="Models\Fund.cs" />
+    <Compile Include="Models\ICommissionProvider.cs" />
+    <Compile Include="Models\IFundSummaryProvider.cs" />
+    <Compile Include="Models\IStockWeightCalculator.cs" />
+    <Compile Include="Models\StockFactory.cs" />
+    <Compile Include="Models\StockType.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\StockWeightCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +104,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

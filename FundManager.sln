@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundManagerApp", "FundManagerApp\FundManagerApp.csproj", "{2D42B92C-7059-4156-B8E2-B5A0EB881792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundManagerTest", "FundManagerTest\FundManagerTest.csproj", "{63E8944B-23F4-4414-893C-9DA54EC2C346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2D42B92C-7059-4156-B8E2-B5A0EB881792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D42B92C-7059-4156-B8E2-B5A0EB881792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D42B92C-7059-4156-B8E2-B5A0EB881792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63E8944B-23F4-4414-893C-9DA54EC2C346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E8944B-23F4-4414-893C-9DA54EC2C346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E8944B-23F4-4414-893C-9DA54EC2C346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E8944B-23F4-4414-893C-9DA54EC2C346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

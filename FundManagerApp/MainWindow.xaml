@@ -1,8 +1,27 @@
 ﻿<Window x:Class="FundManagerApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:viewModels="clr-namespace:FundManagerApp.ViewModels">
+    <Window.DataContext>
+        <viewModels:FundViewModel />
+    </Window.DataContext>
     <Grid>
-        
+        <DataGrid DataContext="{Binding Stocks}"  AutoGenerateColumns="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Name"                    
+                    Binding="{Binding Name}" />
+
+                <DataGridTextColumn 
+                    Header="Price"                    
+                    Binding="{Binding Price}" />
+
+                <DataGridTextColumn 
+                    Header="Quantity"                    
+                    Binding="{Binding Quantity}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
