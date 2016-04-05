@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FundManagerApp.Models
 {
     class CommissionProvider : ICommissionProvider
-    {
+    {        
         public decimal this[StockType stockType]
         {
             get 
@@ -15,10 +15,10 @@ namespace FundManagerApp.Models
                 switch (stockType)
                 {
                     case StockType.Bond:
-                        return 0.005M;
+                        return 0.02M;
 
                     case StockType.Equity:
-                        return 0.02M;
+                        return 0.005M;
 
                     default:
                         throw new NotSupportedException("This stock type is not supported");

@@ -17,11 +17,13 @@ namespace FundManagerTest
         public void IsHighlighted_retuns_false_by_default()
         {
             // Arrange
-            StockViewModel vm = new StockViewModel(new Stock(StockType.Bond, 10000, 1000, 10, String.Empty, Mock.Of<IStockWeightCalculator>()));
+            StockViewModel vm = new StockViewModel(new Stock(StockType.Bond, 10, 10, 0.005M, String.Empty, Mock.Of<IStockWeightCalculator>()));
 
             // Act, Assert
             Assert.IsFalse(vm.IsHighlighted);            
         }
+
+        
 
         [Test]
         public void IsHighlighted_retuns_true_when_MarketValue_less_then_zero()
@@ -34,20 +36,20 @@ namespace FundManagerTest
         }
 
         [Test]
-        public void IsHighlighted_retuns_true_when_TransactionCost_less_then_tolerance_for_Bond()
+        public void IsHighlighted_retuns_true_when_TransactionCost_higher_then_tolerance_for_Bond()
         {
             // Arrange
-            StockViewModel vm = new StockViewModel(new Stock(StockType.Bond, 1000, 99, 1, String.Empty, Mock.Of<IStockWeightCalculator>()));
+            StockViewModel vm = new StockViewModel(new Stock(StockType.Bond, 1000, 100, 1.1M, String.Empty, Mock.Of<IStockWeightCalculator>()));
 
             // Act, Assert
             Assert.IsTrue(vm.IsHighlighted);
         }
 
         [Test]
-        public void IsHighlighted_retuns_true_when_TransactionCost_less_then_tolerance_for_Equity()
+        public void IsHighlighted_retuns_true_when_TransactionCost_higher_then_tolerance_for_Equity()
         {
             // Arrange
-            StockViewModel vm = new StockViewModel(new Stock(StockType.Equity, 199, 1000, 1, String.Empty, Mock.Of<IStockWeightCalculator>()));
+            StockViewModel vm = new StockViewModel(new Stock(StockType.Equity, 200, 1000, 1.1M, String.Empty, Mock.Of<IStockWeightCalculator>()));
 
             // Act, Assert
             Assert.IsTrue(vm.IsHighlighted);

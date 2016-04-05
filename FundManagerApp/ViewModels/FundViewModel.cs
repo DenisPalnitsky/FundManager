@@ -33,17 +33,32 @@ namespace FundManagerApp.ViewModels
 
         public ICommand AddEquity { get; private set; }
         public ICommand AddBond { get; private set; }
+        public FundSummaryViewModel FundSummaryViewModel  { get; private set; }
+
 
         public FundViewModel ( )
         {
             _fund.OnStockListChanged += Fund_OnStockListChanged;         
             CommandsDeclaration();
+            FundSummaryViewModel = new FundSummaryViewModel();
+            RecalculateSummaries();  
         }
 
         void Fund_OnStockListChanged(object sender, EventArgs e)
         {
             OnPropertyChanged(() => Stocks);
+            RecalculateSummaries();  
         }
+
+        private void RecalculateSummaries()
+        {
+            SummaryFactory summaryFactory = new SummaryFactory(_fund.Stocks);
+
+            FundSummaryViewModel.BondSummary = summaryFactory.CreateSummary(StockType.Bond);
+            FundSummaryViewModel.EquitySummary = summaryFactory.CreateSummary(StockType.Equity);
+            FundSummaryViewModel.OverallSummary = summaryFactory.CreateSummary();
+        }
+        
 
         private void CommandsDeclaration()
         {                        

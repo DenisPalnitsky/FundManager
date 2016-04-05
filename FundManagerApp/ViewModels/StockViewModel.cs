@@ -25,9 +25,9 @@ namespace FundManagerApp.ViewModels
                 switch (Stock.StockType)
                 {
                     case FundManagerApp.Models.StockType.Bond:
-                        return Stock.TransactionCost < BondTolerance;
+                        return Stock.TransactionCost > BondTolerance;
                     case FundManagerApp.Models.StockType.Equity:
-                        return Stock.TransactionCost < EquityTolerance;                                        
+                        return Stock.TransactionCost > EquityTolerance;                                        
                 }
 
                 return false;
