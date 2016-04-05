@@ -8,15 +8,20 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:NewStockViewModel}">
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" >
                 <StackPanel.Resources>
-                    <Style TargetType="UserControl">
+                    <Style TargetType="TextBox">
                         <Setter Property="Margin" Value="5" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="20" />
                     </Style>
                 </StackPanel.Resources>
-                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="20"/>
-                <TextBox Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="20" />
-                <Button Command="{Binding AddItem}" >Add</Button>                
+                <Label Content="Price:" VerticalAlignment="Center"  />
+                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Label Content="Quantity:"  Margin="20,0,0,0" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"  />
+                <Button Command="{Binding AddItem}" Content="Add" /> 
             </StackPanel>
         </DataTemplate>
         
@@ -38,11 +43,24 @@
 
         <ContentControl Grid.Row="1" Content="{Binding NewStockViewModel}"/>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Stocks}"  AutoGenerateColumns="False"  >
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Stocks}"  AutoGenerateColumns="False" >
+            <DataGrid.Resources>
+                
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn 
                     Header="Name"                    
-                    Binding="{Binding Stock.Name}" />
+                    Binding="{Binding Stock.Name}" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsHighlighted}" Value="true">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
 
                 <DataGridTextColumn 
                     Header="Price"                    
@@ -51,6 +69,19 @@
                 <DataGridTextColumn 
                     Header="Quantity"                    
                     Binding="{Binding Stock.Quantity}" />
+
+                <DataGridTextColumn 
+                    Header="Market Value" 
+                    Binding="{Binding Stock.MarketValue}" />
+
+                <DataGridTextColumn 
+                    Header="Transaction Cost" 
+                    Binding="{Binding Stock.TransactionCost }" />
+
+                <DataGridTextColumn 
+                    Header="Stock Weight" 
+                    Binding="{Binding Stock.StockWeight }" />
+
 
             </DataGrid.Columns>
         </DataGrid>

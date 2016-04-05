@@ -15,10 +15,10 @@ namespace FundManagerApp.Models
                 switch (stockType)
                 {
                     case StockType.Bond:
-                        return 0.5M;
+                        return 0.005M;
 
                     case StockType.Equity:
-                        return 2;
+                        return 0.02M;
 
                     default:
                         throw new NotSupportedException("This stock type is not supported");

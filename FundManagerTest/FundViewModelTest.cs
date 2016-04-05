@@ -34,7 +34,7 @@ namespace FundManagerTest
             FundViewModel fundVM = new FundViewModel();
             
             fundVM.AddBond.Execute(null);
-            fundVM.NewStockViewModel.AddItem.Execute(null);
+            fundVM.NewStockViewModel.AddItem.Execute();
 
             Assert.That(fundVM.Stocks.Single().Stock.StockType == StockType.Bond);            
         }
@@ -45,7 +45,7 @@ namespace FundManagerTest
             FundViewModel fundVM = new FundViewModel();
 
             fundVM.AddEquity.Execute(null);
-            fundVM.NewStockViewModel.AddItem.Execute(null);
+            fundVM.NewStockViewModel.AddItem.Execute();
 
             Assert.That(fundVM.Stocks.Single().Stock.StockType == StockType.Equity);
         }

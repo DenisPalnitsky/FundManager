@@ -31,7 +31,9 @@ namespace FundManagerApp.Models
         public void AddStock(StockType stockType, decimal price, int quantity)
         {
             _stocks.Add(_stockFactory.CreateStock(stockType, price, quantity, GetStockName(stockType)));
-            OnStockListChanged(this, null);
+            
+            if (OnStockListChanged!= null)
+                OnStockListChanged(this, null);
         }
 
         public event StockListChangedEventHandler OnStockListChanged;
