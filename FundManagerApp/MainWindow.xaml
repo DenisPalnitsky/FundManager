@@ -8,12 +8,22 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:NewStockViewModel}">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding Price}" Width="100"/>
-                <TextBox Text="{Binding Quanyity}" Width="100"/>                
-                <Button Command="{Binding AddItem}">Add</Button>                
+            <StackPanel Orientation="Horizontal" Height="30">
+                <StackPanel.Resources>
+                    <Style TargetType="UserControl">
+                        <Setter Property="Margin" Value="5" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="20"/>
+                <TextBox Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="20" />
+                <Button Command="{Binding AddItem}" >Add</Button>                
             </StackPanel>
         </DataTemplate>
+        
+        <Style TargetType="Button" >
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -22,25 +32,25 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" >
-            <Button Content="Add Equity" Margin="5" Width="100" Command="{Binding AddEquity}" />
-            <Button Content="Add Bond"  Margin="5" Width="100" Command="{Binding AddBond}" />
+            <Button Content="Add Equity" Command="{Binding AddEquity}" />
+            <Button Content="Add Bond"   Command="{Binding AddBond}" />
         </StackPanel>
 
-        <ContentPresenter DataContext="{Binding NewStockViewModel}"/>
-        
-        <DataGrid Grid.Row="2" DataContext="{Binding Stocks}"  AutoGenerateColumns="True" >
+        <ContentControl Grid.Row="1" Content="{Binding NewStockViewModel}"/>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Stocks}"  AutoGenerateColumns="False"  >
             <DataGrid.Columns>
                 <DataGridTextColumn 
                     Header="Name"                    
-                    Binding="{Binding Name}" />
+                    Binding="{Binding Stock.Name}" />
 
                 <DataGridTextColumn 
                     Header="Price"                    
-                    Binding="{Binding Price}" />
+                    Binding="{Binding Stock.Price}" />
 
                 <DataGridTextColumn 
                     Header="Quantity"                    
-                    Binding="{Binding Quantity}" />
+                    Binding="{Binding Stock.Quantity}" />
 
             </DataGrid.Columns>
         </DataGrid>

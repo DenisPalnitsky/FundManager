@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FundManagerApp.Models
 {
+    public delegate void StockListChangedEventHandler(object sender, EventArgs e);
+
     class Fund : IFundSummaryProvider
     {
         private readonly IStockWeightCalculator _stockWeightCalculator;
@@ -27,8 +30,11 @@ namespace FundManagerApp.Models
 
         public void AddStock(StockType stockType, decimal price, int quantity)
         {
-            _stocks.Add(_stockFactory.CreateStock(stockType, price, quantity, GetStockName(stockType)));            
+            _stocks.Add(_stockFactory.CreateStock(stockType, price, quantity, GetStockName(stockType)));
+            OnStockListChanged(this, null);
         }
+
+        public event StockListChangedEventHandler OnStockListChanged;
 
         private string GetStockName(StockType stockType)
         {

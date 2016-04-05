@@ -29,16 +29,25 @@ namespace FundManagerTest
         }
 
         [Test]
-        public void AddItem_command_in_NewStockViewModel_adds_stock_to_fund()
+        public void AddItem_command_in_NewStockViewModel_adds_bond_to_fund()
         {
             FundViewModel fundVM = new FundViewModel();
             
             fundVM.AddBond.Execute(null);
             fundVM.NewStockViewModel.AddItem.Execute(null);
 
-            Assert.That(fundVM.Stocks.Single().  )
+            Assert.That(fundVM.Stocks.Single().Stock.StockType == StockType.Bond);            
+        }
 
-            
+        [Test]
+        public void AddItem_command_in_NewStockViewModel_adds_equity_to_fund()
+        {
+            FundViewModel fundVM = new FundViewModel();
+
+            fundVM.AddEquity.Execute(null);
+            fundVM.NewStockViewModel.AddItem.Execute(null);
+
+            Assert.That(fundVM.Stocks.Single().Stock.StockType == StockType.Equity);
         }
     }
 }

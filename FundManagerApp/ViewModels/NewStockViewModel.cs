@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace FundManagerApp.ViewModels
 {
-    public class NewStockViewModel : BindableBase
+    class NewStockViewModel : BindableBase
     {
         private decimal _price;
         private int _quantity;
@@ -30,13 +30,19 @@ namespace FundManagerApp.ViewModels
 
         public StockType StockType { get; private set; }
 
-        public ICommand AddItem;
+        public DelegateCommand AddItem { get; private set; }
         
         public NewStockViewModel(StockType stockType, Action<NewStockViewModel> addItemAction)
         {
             StockType = stockType;
-            AddItem = new DelegateCommand(()=> addItemAction(this));
+            AddItem = new DelegateCommand(()=> addItemAction(this), ()=> Price > 0 && Quantity > 0);
         }
 
+        protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)
+        {            
+            var result = base.SetProperty<T>(ref storage, value, propertyName);
+            AddItem.RaiseCanExecuteChanged();
+            return result;
+        }
     }
 }

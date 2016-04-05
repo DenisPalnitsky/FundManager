@@ -27,20 +27,22 @@ namespace FundManagerApp.ViewModels
         {
             get
             {
-                return _fund.Stocks.Select(s => new StockViewModel(s));
+                return _fund.Stocks.Select(s => new StockViewModel(s)).ToList();
             }
         }
 
-        public ICommand AddEquity;
-        public ICommand AddBond;
+        public ICommand AddEquity { get; private set; }
+        public ICommand AddBond { get; private set; }
 
         public FundViewModel ( )
         {
-            //_fund.AddStock(StockType.Bond, 1000, 100);
-            //_fund.AddStock(StockType.Equity, 500, 200);
-            //_fund.AddStock(StockType.Equity, 700, 400);
-
+            _fund.OnStockListChanged += Fund_OnStockListChanged;         
             CommandsDeclaration();
+        }
+
+        void Fund_OnStockListChanged(object sender, EventArgs e)
+        {
+            OnPropertyChanged(() => Stocks);
         }
 
         private void CommandsDeclaration()
@@ -54,7 +56,8 @@ namespace FundManagerApp.ViewModels
 
         private void AddStockToFund(NewStockViewModel newStock)
         {
-            _fund.AddStock(newStock.StockType, newStock.Price, newStock.Quantity); 
+            _fund.AddStock(newStock.StockType, newStock.Price, newStock.Quantity);            
+            NewStockViewModel = null;
         }
 
     }

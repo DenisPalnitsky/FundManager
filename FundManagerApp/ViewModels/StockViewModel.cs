@@ -9,8 +9,8 @@ namespace FundManagerApp.ViewModels
     {
         private Models.Stock _stock;
 
-        // not the best way to expose properties in ViewModel
-        public Models.Stock  Stock { get { return _stock; }}
+        // not the best way to expose properties in ViewModel                
+        public Models.Stock Stock { get { return _stock; }}
 
         public StockViewModel(Models.Stock stock)
         {            
