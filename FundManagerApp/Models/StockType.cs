@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FundManagerApp.Models
 {
-    enum StockType
+    public enum StockType
     {
         Bond,
         Equity

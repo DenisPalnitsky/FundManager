@@ -6,8 +6,29 @@
     <Window.DataContext>
         <viewModels:FundViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:NewStockViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Price}" Width="100"/>
+                <TextBox Text="{Binding Quanyity}" Width="100"/>                
+                <Button Command="{Binding AddItem}">Add</Button>                
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <DataGrid DataContext="{Binding Stocks}"  AutoGenerateColumns="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <Button Content="Add Equity" Margin="5" Width="100" Command="{Binding AddEquity}" />
+            <Button Content="Add Bond"  Margin="5" Width="100" Command="{Binding AddBond}" />
+        </StackPanel>
+
+        <ContentPresenter DataContext="{Binding NewStockViewModel}"/>
+        
+        <DataGrid Grid.Row="2" DataContext="{Binding Stocks}"  AutoGenerateColumns="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn 
                     Header="Name"                    

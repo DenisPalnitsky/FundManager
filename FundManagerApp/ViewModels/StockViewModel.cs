@@ -9,39 +9,8 @@ namespace FundManagerApp.ViewModels
     {
         private Models.Stock _stock;
 
-        public string Name { get { return String.Format("{0}{1}", _stock.StockType, _stock.Name); } }
-
-        public decimal Price
-        {
-            get
-            {
-                return _stock.Price;
-            }
-        }
-
-        public decimal Quantity
-        {
-            get
-            {
-                return _stock.Quantity;
-            }
-        }
-
-        public decimal StockWeight
-        {
-            get
-            {
-                return _stock.StockWeight;
-            }
-        }
-
-        public decimal MarketValue
-        {
-            get
-            {
-                return _stock.MarketValue;
-            }
-        }
+        // not the best way to expose properties in ViewModel
+        public Models.Stock  Stock { get { return _stock; }}
 
         public StockViewModel(Models.Stock stock)
         {            
