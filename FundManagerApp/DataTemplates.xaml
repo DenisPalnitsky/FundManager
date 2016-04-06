@@ -11,6 +11,8 @@
                     <Setter Property="Height" Value="20" />
                 </Style>
             </StackPanel.Resources>
+
+            <Label Content="{Binding StockType}" ContentStringFormat="New {0}" VerticalAlignment="Center"  Margin="0,0,20,0"  />
             <Label Content="Price:" VerticalAlignment="Center"  />
             <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
 
@@ -49,10 +51,10 @@
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TotalNumber}" />
 
             <Label Grid.Row="2" Grid.Column="0" Content="Total Stock Weight" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TotalStockWeight, StringFormat=N2}" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TotalStockWeight, StringFormat=N}" />
 
             <Label Grid.Row="3" Grid.Column="0" Content="Total Market Value" />
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalMarketValue, StringFormat=N2}" /> 
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalMarketValue, StringFormat=N}" /> 
         </Grid>                  
     </DataTemplate>
 

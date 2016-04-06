@@ -35,7 +35,7 @@ namespace FundManagerApp.ViewModels
         public NewStockViewModel(StockType stockType, Action<NewStockViewModel> addItemAction)
         {
             StockType = stockType;
-            AddItem = new DelegateCommand(()=> addItemAction(this), ()=> Price > 0 && Quantity > 0);
+            AddItem = new DelegateCommand(()=> addItemAction(this), ()=> Quantity > 0);
         }
 
         protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)

@@ -27,8 +27,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" >
             <Button Content="Add Equity" Command="{Binding AddEquity}" />
@@ -75,11 +75,11 @@
 
                 <DataGridTextColumn 
                     Header="Transaction Cost" 
-                    Binding="{Binding Stock.TransactionCost }" />
+                    Binding="{Binding Stock.TransactionCost, StringFormat=N }" />
 
                 <DataGridTextColumn 
                     Header="Stock Weight" 
-                    Binding="{Binding Stock.StockWeight }" />
+                    Binding="{Binding Stock.StockWeight, StringFormat=P }" />
 
 
             </DataGrid.Columns>
