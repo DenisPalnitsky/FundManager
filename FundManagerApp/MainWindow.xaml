@@ -79,7 +79,7 @@
 
                 <DataGridTextColumn 
                     Header="Stock Weight" 
-                    Binding="{Binding Stock.StockWeight, StringFormat=P }" />
+                    Binding="{Binding Stock.StockWeight, StringFormat=N }" />
 
 
             </DataGrid.Columns>
