@@ -21,9 +21,6 @@ namespace FundManagerApp.Models
 
         public Stock CreateStock(StockType stockType, decimal price, int quantity, string id)
         {
-            if (price < 0)
-                throw new ArgumentException("Price cannot be less then zero");
-
             if (quantity < 0)
                 throw new ArgumentException("Quantity cannot be less then zero");
 

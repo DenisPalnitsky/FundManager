@@ -65,9 +65,11 @@ namespace FundManagerTest
             StockFactory stockFactory = new StockFactory(Mock.Of<IStockWeightCalculator>(),
                Mock.Of<ICommissionProvider>());
 
-            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, -1, 1, String.Empty));
-            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, -1, 1, String.Empty));
+            // Price less then zero
+            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, -1, 1, String.Empty));
+            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, -1, 1, String.Empty));
 
+            // Quantity less then zero
             Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, 1, -1, String.Empty));
             Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, 1, -1, String.Empty));
         }
