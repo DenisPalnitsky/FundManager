@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace FundManagerApp.ViewModels
 {
-    class NewStockViewModel : BindableBase
+    class NewStockViewModel : BindableBase, IDataErrorInfo
     {
         private decimal _price;
         private int _quantity;
@@ -35,7 +35,7 @@ namespace FundManagerApp.ViewModels
         public NewStockViewModel(StockType stockType, Action<NewStockViewModel> addItemAction)
         {
             StockType = stockType;
-            AddItem = new DelegateCommand(()=> addItemAction(this), ()=> Quantity > 0);
+            AddItem = new DelegateCommand(() => addItemAction(this), () => Error == null);
         }
 
         protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)
@@ -43,6 +43,24 @@ namespace FundManagerApp.ViewModels
             var result = base.SetProperty<T>(ref storage, value, propertyName);
             AddItem.RaiseCanExecuteChanged();
             return result;
+        }
+
+
+        
+        public string Error {  get;  set;   }
+
+        public string this[string columnName]
+        {
+            get 
+            {
+                string error = null; 
+
+                if (columnName == "Price" && Price < 0)
+                    error = "Price is less then zero";
+
+                Error = error;
+                return error;
+            }
         }
     }
 }

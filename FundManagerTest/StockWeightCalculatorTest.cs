@@ -38,13 +38,13 @@ namespace FundManagerTest
         }
 
         [Test]
-        public void CalculateStockWeight_throws_exception_if_TotalMarketValue_is_zero()
+        public void CalculateStockWeight_returns_zero_if_TotalMarketValue_is_zero()
         {
             // Arrange 
             StockWeightCalculator stockWeightCalculator = new StockWeightCalculator(new FundSummaryProviderStub(0));
 
             // Act, Assert
-            Assert.Throws<ArgumentException>(() => stockWeightCalculator.CalculateStockWeight(10));
+            Assert.AreEqual(0, stockWeightCalculator.CalculateStockWeight(10));
         }
     }
 }

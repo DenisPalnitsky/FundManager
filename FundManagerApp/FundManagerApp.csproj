@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ValidationRules\OnlyPositiveNumbersValidationRule.cs" />
     <Compile Include="ViewModels\FundSummaryViewModel.cs" />
     <Compile Include="ViewModels\FundViewModel.cs" />
     <Compile Include="ViewModels\NewStockViewModel.cs" />

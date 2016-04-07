@@ -66,12 +66,13 @@ namespace FundManagerTest
                Mock.Of<ICommissionProvider>());
 
             // Price less then zero
-            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, -1, 1, String.Empty));
-            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, -1, 1, String.Empty));
+            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, -1, 1, String.Empty));
+            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, -1, 1, String.Empty));
+            Assert.DoesNotThrow(() => stockFactory.CreateStock(StockType.Equity, 0, 1, String.Empty));
 
-            // Quantity less then zero
-            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, 1, -1, String.Empty));
-            Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, 1, -1, String.Empty));
+            //// Quantity less then zero
+            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Bond, 1, -1, String.Empty));
+            //Assert.Throws<ArgumentException>(() => stockFactory.CreateStock(StockType.Equity, 1, -1, String.Empty));
         }
     }
 }

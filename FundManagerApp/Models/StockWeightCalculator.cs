@@ -18,7 +18,7 @@ namespace FundManagerApp.Models
         public decimal CalculateStockWeight(decimal marketValue)
         {
             if (_fundSummary.TotalMarketValue == 0)
-                throw new ArgumentException("Total market value is zero");
+                return 0;
          
             return marketValue / (_fundSummary.TotalMarketValue / 100);
         }
